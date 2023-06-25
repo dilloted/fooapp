@@ -1,0 +1,45 @@
+version: v1
+kind: kubernetes
+application: app
+targets:
+  staging:  
+    account: agent # the name you gave the RNA when you installed it in your staging cluster
+    namespace: foo-staging # defined in namespace-staging.yaml
+    strategy: rolling
+  prod:
+    account: agent # the name you gave the RNA when you installed it in your prod cluster
+    namespace: foo-prod
+    strategy: trafficSplit
+    constraints:
+      dependsOn: ["staging"]
+      beforeDeployment:
+        - pause:
+            untilApproved: true
+manifests:
+  - path: manifests/foo-app.yaml
+  - path: manifests/foo-service.yaml
+  - path: manifests/foo-staging.yaml
+    targets: ["staging"]
+  - path: manifests/foo-prod.yaml
+    targets: ["prod"]
+strategies:
+  rolling:
+    canary:
+      steps:
+        - setWeight:
+            weight: 100
+  trafficSplit:
+    canary:
+      steps:
+        - setWeight:
+            weight: 25
+        - exposeServices:
+            services:
+              - <my-app-service>
+            ttl:
+              duration: 30
+              unit: minutes
+        - pause:
+            untilApproved: true
+        - setWeight:
+            weight: 100
