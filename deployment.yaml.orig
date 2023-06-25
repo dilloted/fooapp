@@ -23,6 +23,11 @@ manifests:
   - path: manifests/foo-prod.yaml
     targets: ["prod"]
 strategies:
+  rolling:
+    canary:
+      steps:
+        - setWeight:
+            weight: 100
   trafficSplit:
     canary:
       steps:
