@@ -16,8 +16,8 @@ spec:
     spec:
       containers:
       - name: foo
-        image: bhargavshah86/kube-test:v0.1
+        image: hashicorp/http-echo:0.2.3
         ports:
-        - containerPort: 80
-        ##args:
-        - #"-text=Hello World! This is a Baeldung Kubernetes with kind App"
+        - containerPort: 5678
+        args:
+        - "-text=Hello World! This is a Dillon Hayutin's hello world app using the Armory CDaaS"
