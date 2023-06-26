@@ -6,3 +6,5 @@ metadata:
 spec:
   finalizers:
   - kubernetes
+
+#comment to be removed
