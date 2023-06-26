@@ -20,4 +20,5 @@ spec:
         ports:
         - containerPort: 5678
         args:
-        - "-text=Hello World! This is a Dillon Hayutin hello world app using the Armory CDaaS"
+        - "-text=Hello World! This is a Baeldung Kubernetes with kind App"
+#testadd
