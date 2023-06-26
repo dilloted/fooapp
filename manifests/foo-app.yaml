@@ -16,8 +16,8 @@ spec:
     spec:
       containers:
       - name: foo
-        image: bhargavshah86/kube-test:v0.1 #hashicorp/http-echo:0.2.3
+        image: bhargavshah86/kube-test:v0.1
         ports:
-        - containerPort: 5678
+        - containerPort: 80
         #args:
-        #- "-text=Hello World! This is a Baeldung Kubernetes with kind App"
+        - #"-text=Hello World! This is a Baeldung Kubernetes with kind App"

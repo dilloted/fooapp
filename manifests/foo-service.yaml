@@ -8,7 +8,11 @@ spec:
     app: foo
   ports:
   # Default port used by the image
-  - port: 5678
+  - protocol: TCP
+    port: 80
+    argetPort: 80
+    nodePort: 30081   
+  type: NodePort
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -24,4 +28,4 @@ spec:
           service:
             name: foo-service
             port:
-              number: 5678
+              number: 80
