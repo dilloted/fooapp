@@ -20,4 +20,4 @@ spec:
         ports:
         - containerPort: 5678
         args:
-        - "-text=Hello World! This is a Dillon Hayutin's hello world app using the Armory CDaaS"
+        - "-text=Hello World! This is a Dillon Hayutin hello world app using the Armory CDaaS"
