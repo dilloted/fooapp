@@ -7,7 +7,7 @@ targets:
     namespace: foo-staging # defined in namespace-staging.yaml
     strategy: rolling
   prod:
-    account: agent # the name you gave the RNA when you installed it in your prod cluster
+    account: agentkind # the name you gave the RNA when you installed it in your prod cluster
     namespace: foo-prod
     strategy: trafficSplit
     constraints:
