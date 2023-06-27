@@ -20,6 +20,27 @@ manifests:
   - path: manifests/foo-service.yaml
   - path: manifests/foo-staging.yaml
     targets: ["staging"]
+strategies:
+  rolling:
+    canary:
+      steps:
+        - setWeight:
+            weight: 100
+  trafficSplit:
+    canary:
+      steps:
+        - setWeight:
+            weight: 25
+        - exposeServices:
+            services:
+              - foo-service
+            ttl:
+              duration: 30
+              unit: minutes
+        - pause:
+            untilApproved: true
+        - setWeight:
+            weight: 100
   - path: manifests/foo-prod.yaml
     targets: ["prod"]
 strategies:
