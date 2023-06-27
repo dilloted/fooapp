@@ -15,6 +15,15 @@ targets:
       beforeDeployment:
         - pause:
             untilApproved: true
+  prodmulti:
+    account: agentkind # the name you gave the RNA when you installed it in your prod cluster
+    namespace: foo-prodmulti
+    strategy: trafficSplit
+    constraints:
+      dependsOn: ["staging"]
+      beforeDeployment:
+        - pause:
+            untilApproved: true
 manifests:
   - path: manifests/foo-app.yaml
   - path: manifests/foo-service.yaml
@@ -22,6 +31,9 @@ manifests:
     targets: ["staging"]
   - path: manifests/foo-prod.yaml
     targets: ["prod"]
+  - path: manifests/foo-prodmulti.yaml
+    targets: ["prodmulti"]
+
 strategies:
   rolling:
     canary:
