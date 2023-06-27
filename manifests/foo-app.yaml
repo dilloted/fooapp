@@ -18,7 +18,6 @@ spec:
       - name: foo
         image: hashicorp/http-echo:0.2.3
         ports:
-        - containerPort: 80
+        - containerPort: 5678
         args:
         - "-text=Hello World! This is a Baeldung Kubernetes with kind App"
-#testadd
