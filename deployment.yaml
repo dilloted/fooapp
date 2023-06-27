@@ -7,7 +7,7 @@ targets:
     namespace: foo-staging # defined in namespace-staging.yaml
     strategy: rolling
   prod:
-    account: agentkind # the name you gave the RNA when you installed it in your prod cluster
+    account: agentkind
     namespace: foo-prod
     strategy: trafficSplit
     constraints:
@@ -16,7 +16,7 @@ targets:
         - pause:
             untilApproved: true
   prodmulti:
-    account: agentkind # the name you gave the RNA when you installed it in your prod cluster
+    account: agentkind 
     namespace: foo-prodmulti
     strategy: trafficSplit
     constraints:
@@ -29,10 +29,11 @@ manifests:
   - path: manifests/foo-service.yaml
   - path: manifests/foo-staging.yaml
     targets: ["staging"]
-  - path: manifests/foo-prod.yaml
-    targets: ["prod"]
   - path: manifests/foo-prodmulti.yaml
     targets: ["prodmulti"]
+  - path: manifests/foo-prod.yaml
+    targets: ["prod"]
+
 
 strategies:
   rolling:
@@ -42,6 +43,9 @@ strategies:
             untilApproved: true
         - setWeight:
             weight: 100
+        - exposeServices:
+            services:
+              - foo-service
   trafficSplit:
     canary:
       steps:

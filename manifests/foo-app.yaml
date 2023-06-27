@@ -5,7 +5,7 @@ metadata:
   labels:
     app: foo
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: foo
@@ -16,6 +16,9 @@ spec:
     spec:
       containers:
       - name: foo
-        image: lscr.io/linuxserver/plex:latest
+        image: hashicorp/http-echo:0.2.3
         ports:
-        - containerPort: 32400
+        - containerPort: 80
+        args:
+        - "-text=Hello World! This is a Baeldung Kubernetes with kind App"
+#testadd
