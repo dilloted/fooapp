@@ -3,7 +3,7 @@ kind: kubernetes
 application: app
 targets:
   staging:  
-    account: agent # the name you gave the RNA when you installed it in your staging cluster
+    account: agent # the name you gave the RNA when you installed it in your staging clusters
     namespace: foo-staging # defined in namespace-staging.yaml
     strategy: rolling
   prod:
