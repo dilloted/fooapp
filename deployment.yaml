@@ -2,6 +2,10 @@ version: v1
 kind: kubernetes
 application: app
 targets:
+  test:  
+    account: agent # the name you gave the RNA when you installed it in your staging cluster
+    namespace: foo-test # defined in namespace-staging.yaml
+    strategy: rolling
   staging:  
     account: agent # the name you gave the RNA when you installed it in your staging cluster
     namespace: foo-staging # defined in namespace-staging.yaml
@@ -18,6 +22,8 @@ targets:
 manifests:
   - path: manifests/foo-app.yaml
   - path: manifests/foo-service.yaml
+  - path: manifests/foo-test.yaml
+    targets: ["test"]
   - path: manifests/foo-staging.yaml
     targets: ["staging"]
   - path: manifests/foo-prod.yaml
