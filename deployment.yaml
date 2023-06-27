@@ -16,7 +16,7 @@ targets:
         - pause:
             untilApproved: true
   prodmulti:
-    account: agentkind 
+    account: wanda
     namespace: foo-prodmulti
     strategy: trafficSplit
     constraints:
