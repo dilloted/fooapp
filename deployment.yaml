@@ -6,15 +6,6 @@ targets:
     account: agent # the name you gave the RNA when you installed it in your staging cluster
     namespace: foo-staging # defined in namespace-staging.yaml
     strategy: rolling
-    constraints:
-            # A set of steps that are executed in parallel
-            beforeDeployment:
-                - pause: # The map key is the step type
-                    # The duration of the pause before the deployment continues. If duration is not zero, set untilApproved to false.
-                    duration: 10
-                    unit: SECONDS
-                    # If set to true, the deployment waits until a manual approval to continue. Only set this to true if duration and unit are not set.
-                    untilApproved: true
   prod:
     account: agent # the name you gave the RNA when you installed it in your prod cluster
     namespace: foo-prod
