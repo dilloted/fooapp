@@ -18,4 +18,4 @@ spec:
       - name: foo
         image: lscr.io/linuxserver/plex:latest
         ports:
-        - containerPort: 5678
+        - containerPort: 32400
